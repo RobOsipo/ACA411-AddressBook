@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './App.module.css'
+import classes from './SingleContact.module.css'
 
 
 const SingleContact = ({ addressBook }) => {
@@ -10,6 +10,7 @@ const SingleContact = ({ addressBook }) => {
             <h6 className={classes['address-info']}>City: ${addressBook.city}</h6>
             <h6 className={classes['address-info']}>State: ${addressBook.state}</h6>
             <h6 className={classes['address-info']}>Country: ${addressBook.country}</h6>
+            
         </>
     )
     

@@ -1,6 +1,6 @@
 import React from 'react'
-import AllContacts from './AllContacts.js'
-import SingleContact from './SingleContact.js'
+import AllContacts from './AllContacts/AllContacts.js'
+import SingleContact from './SingleContact/SingleContact.js'
 import classes from './App.module.css'
 
 
@@ -44,7 +44,7 @@ const App = () => {
     setResults(data.results)
   })
   
-}, [show])
+}, [])
 
   
   
@@ -54,14 +54,14 @@ function getAll() {
   
 }
 
-const buttonText = getJustOneContact ? 'All Contacts' : 'Just one Contact'
+const buttonText = getJustOneContact ? 'Contacts' : 'Just one Contact'
 const hideText = show ? 'Hide' : 'Show'
   
   return (
     <main className={classes['app-container']}>
       <h1>Address Book</h1>
-      <button onClick={getAll}>Click for {buttonText}</button>
-      {getAllContacts && <button onClick={handleShow}>{hideText} contacts</button>}
+      <button className={classes['toggle-info']} onClick={getAll}>Click for {buttonText}</button>
+      {getAllContacts && <button className={classes['toggle-info']} onClick={handleShow}>{hideText} contacts</button>}
       {getJustOneContact && <SingleContact addressBook={addressBook}  />}
       
       {getAllContacts && <AllContacts show={show} handleShow={handleShow} results={results} addressBook={addressBook} />}

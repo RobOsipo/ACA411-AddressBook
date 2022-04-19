@@ -1,0 +1,16 @@
+:root {
+    --info-font: 1.1rem;
+    --img-height: 13rem;
+    --img-width: 13rem;
+    --img-shadow: 0 8px 6px -6px black;
+}
+
+.address-info {
+    font-size: var(--info-font);
+}
+
+.mapped-images {
+    height: var(--img-height);
+    width: var(--img-width);
+    box-shadow: var(--img-shadow);
+}
