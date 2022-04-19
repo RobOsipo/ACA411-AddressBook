@@ -1,19 +1,15 @@
 import React from 'react'
+import classes from './App.module.css'
 
 
-const AllContacts = ({ results }) => {
+const AllContacts = ({ results, show, handleShow }) => {
     
-const [show, setShow] = React.useState(true)
 
-function handleShow() {
-    setShow(prevState => !prevState)
-}
-    
     
     
     return (
         
-        results.map((contact, index) => {
+        results.map((contact) => {
         return (
           <>
             {show && <h3 key={Math.floor(Math.random() * 10000)}>
@@ -21,9 +17,9 @@ function handleShow() {
                 {contact.name.first} {contact.name.last}
             </h3>}
             
-            {show && <img key={Math.floor(Math.random() * 10000)} src={contact.picture.thumbnail} />}
+            {show && <img className={classes['mapped-images']} key={Math.floor(Math.random() * 10000)} src={contact.picture.thumbnail} />}
             
-            <button onClick={handleShow}>{show ? 'Hide' : 'Show'} Contact</button>
+            {/* <button onClick={handleShow}>{show ? 'Hide' : 'Show'} Contact</button> */}
           </>
         )
       })

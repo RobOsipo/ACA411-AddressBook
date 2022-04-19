@@ -1,21 +1,27 @@
 import React from 'react'
 import AllContacts from './AllContacts.js'
 import SingleContact from './SingleContact.js'
-import './App.css'
+import classes from './App.module.css'
 
 
 
 const App = () => {
     const [getJustOneContact, setGetJustOneContact] = React.useState(true)
-const [getAllContacts, setGetAllContacts] = React.useState(false)
-  
- const [addressBook, setAddressBook] = React.useState({
-   first: '',
-   last: '',
-   thumbnail: ''
- })
+    const [getAllContacts, setGetAllContacts] = React.useState(false)
+      
+    const [addressBook, setAddressBook] = React.useState({
+      first: '',
+      last: '',
+      thumbnail: ''
+    })
+    
+    const [results, setResults] = React.useState([])
+    const [show, setShow] = React.useState(true)
  
- const [results, setResults] = React.useState([])
+
+ function handleShow() {
+     setShow(prevState => !prevState)
+ }
   
   
   React.useEffect(() => {
@@ -32,7 +38,8 @@ const [getAllContacts, setGetAllContacts] = React.useState(false)
     setResults(data.results)
   })
   
-}, [])
+}, [show])
+
   
   
 function getAll() {
@@ -42,14 +49,16 @@ function getAll() {
 }
 
 const buttonText = getJustOneContact ? 'All Contacts' : 'Just one Contact'
+const hideText = show ? 'Hide' : 'Show'
   
   return (
-    <main className='app-container'>
+    <main className={classes['app-container']}>
       <h1>Address Book</h1>
       <button onClick={getAll}>Click for {buttonText}</button>
+      {getAllContacts && <button onClick={handleShow}>{hideText} contacts</button>}
       {getJustOneContact && <SingleContact first={addressBook.first} last={addressBook.last} thumbnail={addressBook.thumbnail}  />}
       
-      {getAllContacts && <AllContacts results={results} />}
+      {getAllContacts && <AllContacts show={show} handleShow={handleShow} results={results} />}
       
     </main>
   )

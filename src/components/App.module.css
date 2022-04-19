@@ -1,0 +1,22 @@
+:root {
+    --bg-color: rgb(132, 186, 204);
+    --img-height: 200px;
+    --img-width: 200px;
+    --img-shadow:0 8px 6px -6px black;
+}
+
+
+.app-container {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapped-images {
+    height: var(--img-height);
+    width: var(--img-width);
+    box-shadow: var(--img-shadow);
+}
+
