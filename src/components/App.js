@@ -12,7 +12,10 @@ const App = () => {
     const [addressBook, setAddressBook] = React.useState({
       first: '',
       last: '',
-      thumbnail: ''
+      thumbnail: '',
+      city: '',
+      state: '',
+      country: ''
     })
     
     const [results, setResults] = React.useState([])
@@ -32,7 +35,10 @@ const App = () => {
     setAddressBook({
       first: data.results[0].name.first,
       last: data.results[0].name.last,
-      thumbnail: data.results[6].picture.thumbnail
+      thumbnail: data.results[6].picture.thumbnail,
+      city: data.results[0].location.city,
+      state: data.results[0].location.state,
+      country: data.results[0].location.country
     })
     
     setResults(data.results)
@@ -56,9 +62,9 @@ const hideText = show ? 'Hide' : 'Show'
       <h1>Address Book</h1>
       <button onClick={getAll}>Click for {buttonText}</button>
       {getAllContacts && <button onClick={handleShow}>{hideText} contacts</button>}
-      {getJustOneContact && <SingleContact first={addressBook.first} last={addressBook.last} thumbnail={addressBook.thumbnail}  />}
+      {getJustOneContact && <SingleContact addressBook={addressBook}  />}
       
-      {getAllContacts && <AllContacts show={show} handleShow={handleShow} results={results} />}
+      {getAllContacts && <AllContacts show={show} handleShow={handleShow} results={results} addressBook={addressBook} />}
       
     </main>
   )
